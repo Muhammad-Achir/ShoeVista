@@ -7,6 +7,53 @@ const ShopBy = ({ filter, title }) => {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
 
+  const data = [
+    {
+      _id: "adidas",
+      img: "/GenInfo/adidas.jpg",
+      title: "Adidas Collection",
+      sellPrice: 110,
+      mrp: 10,
+      discount: 20,
+      brand: "Adidas",
+      category: "women",
+      rating: 4.5,
+    },
+    {
+      _id: "nike",
+      img: "/GenInfo/nike.png",
+      title: "Nike Collection",
+      sellPrice: 220,
+      mrp: 30,
+      discount: 40,
+      brand: "Nike",
+      category: "men",
+      rating: 4.5,
+    },
+    {
+      _id: "skechers",
+      img: "/GenInfo/skechers.jpg",
+      title: "Skechers Collection",
+      sellPrice: 550,
+      mrp: 0,
+      discount: 0,
+      brand: "Skechers",
+      category: "child",
+      rating: 4.5,
+    },
+    {
+      _id: "puma",
+      img: "/GenInfo/puma.jpg",
+      title: "Puma Collection",
+      sellPrice: 770,
+      mrp: 0,
+      discount: 0,
+      brand: "Puma",
+      category: "unisex",
+      rating: 4.5,
+    },
+  ];
+
   useEffect(() => {
     let isMounted = true;
     const fetchData = async () => {
@@ -15,7 +62,11 @@ const ShopBy = ({ filter, title }) => {
           `${import.meta.env.VITE_BASE_URL}/api/filter/${filter}`
         );
         if (isMounted) {
-          setProducts(res.data);
+          if (filter === "bestSellers") {
+            setProducts(data);
+          } else {
+            setProducts(res.data);
+          }
           setLoading(false);
         }
       } catch (err) {

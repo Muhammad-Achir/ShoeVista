@@ -36,7 +36,7 @@ const HorSlider = ({ product, home }) => {
                 </div>
 
                 {/* Product image */}
-                <div className="xs:h-2/3 sm:h-1/2 md:h-2/3 md:w-5/6 xs:text-sm md:text-base flex items-center ">
+                <div className="xs:h-2/3 sm:h-1/2 md:h-2/3 xs:text-sm md:text-base flex items-center overflow-hidden">
                     <Link to={`/product-details/${product._id}`}>
                         <img src={img} alt={title} />
                     </Link>
